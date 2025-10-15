@@ -1,11 +1,11 @@
 import React from 'react'
 import Calculator from './calculator'
 
-function App() {
+function App () {
   return (
     <div>
       <Calculator />
-      <div style={{marginTop: 30, textAlign: 'center'}}>
+      <div style={{ marginTop: 30, textAlign: 'center' }}>
         Calculator component{' '}
         <a href="https://codepen.io/mjijackson/pen/xOzyGX">created</a>
         {' by '}
@@ -18,5 +18,3 @@ function App() {
 }
 
 export default App
-
-/* eslint import/namespace:0 */

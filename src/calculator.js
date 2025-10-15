@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import CalculatorDisplay from 'calculator-display'
 import styles from './calculator.module.css'
 
-function CalculatorKey({className = '', ...props}) {
+function CalculatorKey ({ className = '', ...props }) {
   return (
     <button className={`${styles.calculatorKey} ${className}`} {...props} />
   )
@@ -20,23 +20,25 @@ const CalculatorOperations = {
   '=': (prevValue, nextValue) => nextValue,
 }
 
-function calcReducer(currentState, newState) {
-  return {...currentState, ...newState}
+function calcReducer (currentState, newState) {
+  return { ...currentState, ...newState }
 }
 
-function Calculator() {
+function Calculator () {
   const [state, setState] = React.useReducer(calcReducer, {
     value: null,
     displayValue: '0',
     operator: null,
     waitingForOperand: false,
   })
-  const {value, displayValue, operator, waitingForOperand} = state
+  const { value, displayValue, operator, waitingForOperand } = state
 
-  function handleKeyDown(event) {
-    let {key} = event
+  function handleKeyDown (event) {
+    let { key } = event
 
-    if (key === 'Enter') key = '='
+    if (key === 'Enter') {
+      key = '='
+    }
 
     if (/\d/.test(key)) {
       event.preventDefault()
@@ -69,7 +71,7 @@ function Calculator() {
     return () => document.removeEventListener('keydown', handleKeyDown)
   })
 
-  function clearAll() {
+  function clearAll () {
     setState({
       value: null,
       displayValue: '0',
@@ -78,19 +80,19 @@ function Calculator() {
     })
   }
 
-  function clearDisplay() {
+  function clearDisplay () {
     setState({
       displayValue: '0',
     })
   }
 
-  function clearLastChar() {
+  function clearLastChar () {
     setState({
       displayValue: displayValue.substring(0, displayValue.length - 1) || '0',
     })
   }
 
-  function toggleSign() {
+  function toggleSign () {
     const newValue = parseFloat(displayValue) * -1
 
     setState({
@@ -98,10 +100,12 @@ function Calculator() {
     })
   }
 
-  function inputPercent() {
+  function inputPercent () {
     const currentValue = parseFloat(displayValue)
 
-    if (currentValue === 0) return
+    if (currentValue === 0) {
+      return
+    }
 
     const fixedDigits = displayValue.replace(/^-?\d*\.?/, '')
     const newValue = parseFloat(displayValue) / 100
@@ -111,7 +115,7 @@ function Calculator() {
     })
   }
 
-  function inputDot() {
+  function inputDot () {
     if (!/\./.test(displayValue)) {
       setState({
         displayValue: `${displayValue}.`,
@@ -120,7 +124,7 @@ function Calculator() {
     }
   }
 
-  function inputDigit(digit) {
+  function inputDigit (digit) {
     if (waitingForOperand) {
       setState({
         displayValue: String(digit),
@@ -134,7 +138,7 @@ function Calculator() {
     }
   }
 
-  function performOperation(nextOperator) {
+  function performOperation (nextOperator) {
     const inputValue = parseFloat(displayValue)
 
     if (value == null) {
@@ -163,7 +167,7 @@ function Calculator() {
   return (
     <div className={styles.calculator}>
       <React.Suspense
-        fallback={<div style={{height: 120}}>Loading display...</div>}
+        fallback={<div style={{ height: 120 }}>Loading display...</div>}
       >
         <CalculatorDisplay value={displayValue} />
       </React.Suspense>

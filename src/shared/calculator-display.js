@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AutoScalingText from './auto-scaling-text'
-import {getFormattedValue} from './utils'
+import { getFormattedValue } from './utils'
 
-function CalculatorDisplay({value, ...props}) {
+function CalculatorDisplay ({ value, ...props }) {
   const formattedValue = getFormattedValue(
     value,
     typeof window === 'undefined' ? 'en-US' : window.navigator.language,
