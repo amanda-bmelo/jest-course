@@ -22,7 +22,11 @@ module.exports = {
           { loader: 'style-loader' },
           {
             loader: 'css-loader',
-            options: { modules: true, localsConvention: 'camelCaseOnly' },
+            options: { 
+              modules: {
+                exportLocalsConvention: 'camelCaseOnly',
+              },
+            },
           },
         ],
       },
