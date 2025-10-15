@@ -1,0 +1,10 @@
+import React from 'react'
+import {render} from '@testing-library/react'
+import CalculatorDisplay from '../calculator-display'
+
+test('renders', () => {
+  const {container} = render(<CalculatorDisplay value="0" />)
+  expect(container.innerHTML).toMatchInlineSnapshot(
+    `"<div class="css-125fbpn-calculator-display--CalculatorDisplay"><div class="autoScalingText" style="transform: scale(1,1);" data-testid="total">0</div></div>"`,
+  )
+})
