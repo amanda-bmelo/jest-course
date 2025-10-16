@@ -9,4 +9,5 @@ module.exports = {
   },
   setupFilesAfterEnv: ['@testing-library/jest-dom'],
   snapshotSerializers: ['@emotion/jest/serializer'],
+  collectCoverageFrom: ['**/src/**/*.js'],
 }
