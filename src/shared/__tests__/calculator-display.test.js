@@ -1,7 +1,7 @@
 import React from 'react'
 import {render} from '@testing-library/react'
 import {createSerializer} from '@emotion/jest'
-import CalculatorDisplay from '../calculator-display'
+import CalculatorDisplay from 'calculator-display'
 
 expect.addSnapshotSerializer(
   createSerializer({
