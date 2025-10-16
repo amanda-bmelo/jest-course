@@ -1,18 +1,18 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import CalculatorDisplay from '../calculator-display'
 
 jest.mock('../utils', () => ({
-  getFormattedValue: jest.fn((value) => value),
+  getFormattedValue: jest.fn(value => value),
 }))
 
-import { getFormattedValue } from '../utils'
+import {getFormattedValue} from '../utils'
 const mockGetFormattedValue = getFormattedValue
 
 describe('CalculatorDisplay', () => {
   beforeEach(() => {
     jest.clearAllMocks()
-    mockGetFormattedValue.mockImplementation((value) => value)
+    mockGetFormattedValue.mockImplementation(value => value)
   })
 
   describe('Basic Rendering', () => {
@@ -29,7 +29,10 @@ describe('CalculatorDisplay', () => {
 
     test('calls getFormattedValue with correct parameters', () => {
       render(<CalculatorDisplay value="42" />)
-      expect(mockGetFormattedValue).toHaveBeenCalledWith('42', expect.any(String))
+      expect(mockGetFormattedValue).toHaveBeenCalledWith(
+        '42',
+        expect.any(String),
+      )
     })
   })
 
@@ -63,7 +66,9 @@ describe('CalculatorDisplay', () => {
     })
 
     test('value prop is required', () => {
-      const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
+      const consoleSpy = jest
+        .spyOn(console, 'error')
+        .mockImplementation(() => {})
       render(<CalculatorDisplay value="test" />)
       consoleSpy.mockRestore()
     })
