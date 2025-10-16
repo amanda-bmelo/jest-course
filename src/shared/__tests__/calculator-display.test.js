@@ -1,13 +1,12 @@
 import React from 'react'
 import {render} from '@testing-library/react'
-import {createSerializer, matchers} from '@emotion/jest'
+import {createSerializer} from '@emotion/jest'
 import CalculatorDisplay from '../calculator-display'
 
-expect.extend(matchers)
 expect.addSnapshotSerializer(
   createSerializer({
     classNameReplacer(className, index) {
-      return `my-new-class-name-${index}`
+      return `${className}-${index}`
     },
   }),
 )
