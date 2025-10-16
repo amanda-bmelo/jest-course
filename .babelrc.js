@@ -11,7 +11,7 @@ module.exports = {
         hoist: isProd,
         sourceMap: !isProd,
         autoLabel: isProd ? 'never' : 'dev-only',
-        labelFormat: '[filename]--[local]',
+        labelFormat: '[local]',
       },
     ],
   ],

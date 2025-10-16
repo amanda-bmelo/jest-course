@@ -14,6 +14,6 @@ expect.addSnapshotSerializer(
 test('renders', () => {
   const {container} = render(<CalculatorDisplay value="0" />)
   expect(container.innerHTML).toMatchInlineSnapshot(
-    `"<div class="css-125fbpn-calculator-display--CalculatorDisplay"><div class="autoScalingText" style="transform: scale(1,1);" data-testid="total">0</div></div>"`,
+    `"<div class="css-11a8id8-CalculatorDisplay"><div class="autoScalingText" style="transform: scale(1,1);" data-testid="total">0</div></div>"`,
   )
 })
