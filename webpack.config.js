@@ -14,15 +14,19 @@ module.exports = {
       {
         test: /\.css$/,
         exclude: /\.module\.css$/,
-        use: [{loader: 'style-loader'}, {loader: 'css-loader'}],
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
       },
       {
         test: /\.module\.css$/,
         use: [
-          {loader: 'style-loader'},
+          { loader: 'style-loader' },
           {
             loader: 'css-loader',
-            options: {modules: true, localsConvention: 'camelCaseOnly'},
+            options: { 
+              modules: {
+                exportLocalsConvention: 'camelCaseOnly',
+              },
+            },
           },
         ],
       },
